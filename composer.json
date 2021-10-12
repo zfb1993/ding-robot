@@ -1,0 +1,7 @@
+{
+    "require": {
+        "wangju/ding-notice": "^1.0",
+        "overtrue/weather": "^1.0",
+        "nesbot/carbon": "^2.53"
+    }
+}
