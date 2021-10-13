@@ -65,10 +65,20 @@ $json_string = file_get_contents('./data.json');
 
 // 用参数true把JSON字符串强制转成PHP数组
 $data = json_decode($json_string, true);
-$txt = $data[$index];
+$random = random_int(0,607);
+$poetry = $data[$random];
 
-//获取当前是一周的第几天
+$poetryTitle = $poetry['title'];
+$poetryAuthor = $poetry['author'];
+$poetryContent = '';
 
-$markdown .= "#### 斯普莱斯提醒  \n " .
-            "> ".$txt;
+foreach ($poetry['paragraphs'] as $paragraph){
+    $poetryContent .= "> ".$paragraph."  \n";
+}
+
+
+$markdown .= "#### 今日诗词  \n " .
+            "> ".$poetryTitle ."  \n" .
+            "> ".$poetryAuthor."  \n".
+            $poetryContent;
 $ding->markdown($title,$markdown);
